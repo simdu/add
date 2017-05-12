@@ -1,0 +1,35 @@
+#-----------------------------------------------------------
+# Vivado v2016.3 (64-bit)
+# SW Build 1682563 on Mon Oct 10 19:07:27 MDT 2016
+# IP Build 1681267 on Mon Oct 10 21:28:31 MDT 2016
+# Start of session at: Fri Mar 17 19:53:26 2017
+# Process ID: 10584
+# Current directory: C:/svn/01_mcu/vivado
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11876 C:\svn\01_mcu\vivado\mcu.xpr
+# Log file: C:/svn/01_mcu/vivado/vivado.log
+# Journal file: C:/svn/01_mcu/vivado\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/svn/01_mcu/vivado/mcu.xpr
+launch_runs impl_1
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream
+wait_on_run impl_1
+open_run impl_1
+open_hw
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream
+wait_on_run impl_1
+connect_hw_server -url localhost:3121
+current_hw_target [get_hw_targets */xilinx_tcf/Digilent/210279784698A]
+set_property PARAM.FREQUENCY 15000000 [get_hw_targets */xilinx_tcf/Digilent/210279784698A]
+open_hw_target
+current_hw_device [lindex [get_hw_devices xc7z010_1] 0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z010_1] 0]
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream
+wait_on_run impl_1
+set_property PROBES.FILE {} [lindex [get_hw_devices xc7z010_1] 0]
+set_property PROGRAM.FILE {C:/svn/01_mcu/vivado/mcu.runs/impl_1/mcu.bit} [lindex [get_hw_devices xc7z010_1] 0]
+program_hw_devices [lindex [get_hw_devices xc7z010_1] 0]
+refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
