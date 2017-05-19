@@ -46,9 +46,11 @@ begin
   -----------------------------------------------------------------------------  
   P_tick_dur: process(clk)
   begin
-    if rising_edge(clk) then
+    if rst = '1' then
+     tick_dur_const <= (others => '0');
+    elsif  rising_edge(clk) then
         tick_dur_const <= tick_dur_const + 1;
-        if tick_dur_const = 125000
+        if tick_dur_const = 125000 then
             tick_dur <= '1';
             tick_dur_const <= (others => '0');
         else
@@ -62,11 +64,13 @@ begin
   -----------------------------------------------------------------------------  
   P_tick_nco: process(clk)
   begin
-    if rising_edge(clk) then
+    if rst = '1' then
+     tick_nco_const <= (others => '0');
+    elsif rising_edge(clk) then
         tick_nco_const <= tick_nco_const + 1;
-        if tick_nco_const = 125
+        if tick_nco_const = 125 then
             tick_nco <= '1';
-            tick_nco_const <= (others => '0';
+            tick_nco_const <= (others => '0');
         else
             tick_nco <= '0';
         end if; 
@@ -88,6 +92,4 @@ begin
         fmc_direction => fmc_direct(0),
         fmc_step => fmc_step(0));
         
-
-
 end rtl;

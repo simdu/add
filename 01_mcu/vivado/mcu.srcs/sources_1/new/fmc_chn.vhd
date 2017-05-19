@@ -41,7 +41,7 @@ end fmc_chn;
 architecture rtl of fmc_chn is
  
 --NOC stuff
-type t_nco_seed_lut is ARRAY(48 downto 0) of integer;
+type t_nco_seed_lut is ARRAY(2**c_fmc_tone_ww-1 downto 0) of integer;
 constant nco_seed_lut : t_nco_seed_lut := (0,0,0,0,0,0,0,0,0,0,0,0,0,0,7382,6968,6577,6207,5859,5530,5220,4927,4650,4389,
 4143,3910,3691,3484,3288,3104,2930,2765,2610,2463,2325,2195,2071,1955,1845,1742,1644,1552,1465,1383,1305,1232,1163,1097,
 1036,978,923,871,822,776,732,691,652,616,581,549,518,489,461,0);
@@ -80,7 +80,7 @@ begin
     if rst = '1' then
       nco_akku <= (others => '0');
     elsif rising_edge(clk) then
-       nco_seed <= to_unsigned(nco_seed_lut(to_integer(tone_nr)), 13);
+       nco_seed <= to_unsigned(nco_seed_lut(to_integer(tone_nr)), 14);
       if tick_nco = '1' then
           nco_akku <= nco_akku + nco_seed;
       end if;
