@@ -53,6 +53,7 @@ signal nco_seed       : unsigned(13 downto 0);
 --Stepper Poition motitoring
 signal step_cnt       : unsigned(6 downto 0);
 signal step_dir       : std_logic;
+signal step_last      : std_logic;
 
 --Tone stuff
 signal tone_nr     :unsigned(c_fmc_tone_ww-1 downto 0);
@@ -95,15 +96,17 @@ begin
     if rst = '1' then
      step_cnt <= (others => '0');
      step_dir <= '0';
+     step_last <= '0';
     elsif rising_edge(clk) then
       if(tone_nr > 0) then
        fmc_enable <= '0';
        else
        fmc_enable <= '1';
       end if;
-      if(std_logic(nco_akku(nco_akku'left)) = '1') then
+      if((step_last = '0') and (std_logic(nco_akku(nco_akku'left)) = '1')) then
        step_cnt <= step_cnt + 1;
       end if;
+      step_last <= std_logic(nco_akku(nco_akku'left));
       if(step_cnt > 80) then
        step_dir <= not step_dir;
        step_cnt <= (others => '0');
@@ -117,7 +120,7 @@ begin
   P_addr: process(clk, rst)
   begin
     if rst = '1' then
-      tone_dur <=  (others => '0');
+      --tone_dur <=  (others => '0');
       tone_dur_cnt <=  (others => '0');
       rom_addr <= (others => '0');
     elsif rising_edge(clk) then
