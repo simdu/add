@@ -30,21 +30,6 @@ end fmc_top;
 
 architecture rtl of fmc_top is
     
-    component fmc_chn is
-	port(
-	   rst     : in    std_logic;
-       clk     : in    std_logic;
-       -- ticks
-       tick_dur  : in  std_logic;
-       tick_nco  : in std_logic;
-    
-       -- FMC pin signals
-       fmc_enable : out  std_logic;
-       fmc_direction : out  std_logic;
-       fmc_step   : out  std_logic
-      );
-    end component;
-
     -- signal
     signal chn_enb : std_logic_vector(8-1 downto 0);
     signal tmp_ctrl : UFIX_10_6;
@@ -63,11 +48,11 @@ begin
   begin
     if rising_edge(clk) then
         tick_dur_const <= tick_dur_const + 1;
-        if(tick_dur_const = 125000)
-            tick_dur <= 1;
-            tick_dur_const <= 0;
+        if tick_dur_const = 125000
+            tick_dur <= '1';
+            tick_dur_const <= '0';
         else
-            tick_dur <= 0;
+            tick_dur <= '0';
         end if; 
     end if;      
   end process;
@@ -79,30 +64,21 @@ begin
   begin
     if rising_edge(clk) then
         tick_nco_const <= tick_nco_const + 1;
-        if(tick_nco_const = 125)
-            tick_nco <= 1;
-            tick_nco_const <= 0;
+        if tick_nco_const = 125
+            tick_nco <= '1';
+            tick_nco_const <= '0';
         else
-            tick_nco <= 0;
+            tick_nco <= '0';
         end if; 
     end if;      
   end process;
-  
-  -----------------------------------------------------------------------------
-  -- Get new Addr
-  -----------------------------------------------------------------------------  
-  P_addr_cnt: process(clk)
-  begin
-    if rising_edge(clk) then
-        tone_duraction
-    end if;      
-  end process;
-  
+    
   -----------------------------------------------------------------------------
   -- port map
   -----------------------------------------------------------------------------  
     
-  chn1: fmc_chn
+  chn1 : entity work.fmc_chn
+    generic map(CHN => 0)
     port map (
         rst => rst,
         clk => clk,
