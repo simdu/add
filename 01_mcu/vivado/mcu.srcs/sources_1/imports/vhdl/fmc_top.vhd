@@ -30,12 +30,19 @@ end fmc_top;
 
 architecture rtl of fmc_top is
     
-    component fmc_rom is
+    component fmc_chn is
 	port(
-	   clk  : in std_logic;
-       addr : in  std_logic_vector(c_fmc_rom_aw-1 downto 0);
-       data : out std_logic_vector(c_fmc_rom_dw-1 downto 0)
-       );
+	   rst     : in    std_logic;
+       clk     : in    std_logic;
+       -- ticks
+       tick_dur  : in  std_logic;
+       tick_nco  : in std_logic;
+    
+       -- FMC pin signals
+       fmc_enable : out  std_logic;
+       fmc_direction : out  std_logic;
+       fmc_step   : out  std_logic
+      );
     end component;
 
     -- signal
@@ -91,7 +98,20 @@ begin
     end if;      
   end process;
   
-  
+  -----------------------------------------------------------------------------
+  -- port map
+  -----------------------------------------------------------------------------  
+    
+  chn1: fmc_chn
+    port map (
+        rst => rst,
+        clk => clk,
+        tick_dur => tick_dur,
+        tick_nco => tick_nco,
+        fmc_enable => fmc_enable(0),
+        fmc_direction => fmc_direction(0);
+        fmc_step => fmc_step(0));
+        
 
 
 end rtl;
