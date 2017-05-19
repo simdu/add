@@ -85,4 +85,5 @@
 !*.bmm
 !*.xmp
 
-01_mcu/vivado/mcu.runs/
+01_mcu/vivado/mcu.runs/*
+01_mcu/vivado/mcu.cache/*
