@@ -32,11 +32,11 @@ architecture rtl of fmc_top is
     
     -- signal
     signal chn_enb : std_logic_vector(8-1 downto 0);
-    signal tmp_ctrl : UFIX_10_6;
+    --signal tmp_ctrl : UFIX_10_6;
     signal tick_dur : std_logic;
-    signal tick_dur_const : std_logic_vector(20-1 downto 0);
+    signal tick_dur_const : unsigned(20 downto 0);
     signal tick_nco : std_logic;
-    signal tick_nco_const : std_logic_vector(8-1 downto 0);
+    signal tick_nco_const : unsigned(8 downto 0);
     
     
 begin
@@ -50,7 +50,7 @@ begin
         tick_dur_const <= tick_dur_const + 1;
         if tick_dur_const = 125000
             tick_dur <= '1';
-            tick_dur_const <= '0';
+            tick_dur_const <= (others => '0');
         else
             tick_dur <= '0';
         end if; 
@@ -66,7 +66,7 @@ begin
         tick_nco_const <= tick_nco_const + 1;
         if tick_nco_const = 125
             tick_nco <= '1';
-            tick_nco_const <= '0';
+            tick_nco_const <= (others => '0';
         else
             tick_nco <= '0';
         end if; 
@@ -85,7 +85,7 @@ begin
         tick_dur => tick_dur,
         tick_nco => tick_nco,
         fmc_enable => fmc_enable(0),
-        fmc_direction => fmc_direction(0);
+        fmc_direction => fmc_direct(0),
         fmc_step => fmc_step(0));
         
 
