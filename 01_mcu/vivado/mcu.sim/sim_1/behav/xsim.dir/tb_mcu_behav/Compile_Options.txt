@@ -1,0 +1,1 @@
+-wto "6c20e6a3f48c44279f125b2d8f9dd7c0" --incr --debug "typical" --relax --mt "2" -L "work" -L "secureip" --snapshot "tb_mcu_behav" "work.tb_mcu" -log "elaborate.log" 

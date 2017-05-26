@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="lab_2_top.bit" key="lab_2_top_hw_platform_0-bitFile"/>
+	<item value="Local" key="lab_2_top_hw_platform_0-target"/>
+	<item value="false" key="lab_2_top_hw_platform_0-partial_bit"/>
+	<item value="Auto Detect" key="lab_2_top_hw_platform_0-device"/>
+	<item value="lab_2_top_hw_platform_0" key="programfpga.hwplatform"/>
+	<item value="" key="lab_2_top_hw_platform_0-bmmFile"/>
+</section>

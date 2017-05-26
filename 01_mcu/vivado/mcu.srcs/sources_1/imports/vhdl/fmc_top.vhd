@@ -72,8 +72,8 @@ begin
       -- use address select signal
       case addr_sel is
         -- Port 0 registers --------------------------------------------------
-        when fmc_chn_enb  => bus_out.data(c_gpio_port_ww-1 downto 0) <= chn_enb_reg;
-        when fmc_tmp_ctrl => bus_out.data(c_gpio_port_ww-1 downto 0) <= tmp_ctrl_reg;
+        when fmc_chn_enb  => bus_out.data(7 downto 0) <= chn_enb_reg;
+        when fmc_tmp_ctrl => bus_out.data(9 downto 0) <= tmp_ctrl_reg;
         -- unused addresses ---------------------------------------------------
         when others          => null;
       end case;       
@@ -92,8 +92,8 @@ begin
       if bus_in.wr_enb = '1' then
         -- use address select signal only in bus write cycle
         case addr_sel is
-          when fmc_chn_enb => chn_enb_reg <= bus_in.data(c_fmc_dur_ww-1 downto 0);
-          when fmc_tmp_ctrl  => tmp_ctrl_reg  <= bus_in.data(c_fmc_dur_ww-1 downto 0);
+          when fmc_chn_enb => chn_enb_reg <= bus_in.data(7 downto 0);
+          when fmc_tmp_ctrl  => tmp_ctrl_reg  <= bus_in.data(9 downto 0);
           -- unused addresses -------------------------------------------------
           when others          => null;
         end case;       
@@ -105,7 +105,7 @@ begin
   -----------------------------------------------------------------------------
   -- Tick Duration
   -----------------------------------------------------------------------------  
-  P_tick_dur: process(clk)
+  P_tick_dur: process(clk, rst)
   begin
     if rst = '1' then
      tick_dur_const <= (others => '0');
@@ -123,7 +123,7 @@ begin
   -----------------------------------------------------------------------------
   -- Tick NCO
   -----------------------------------------------------------------------------  
-  P_tick_nco: process(clk)
+  P_tick_nco: process(clk, rst)
   begin
     if rst = '1' then
      tick_nco_const <= (others => '0');

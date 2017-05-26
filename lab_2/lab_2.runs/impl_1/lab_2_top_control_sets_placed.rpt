@@ -1,0 +1,76 @@
+Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2016.3 (win64) Build 1682563 Mon Oct 10 19:07:27 MDT 2016
+| Date         : Fri Mar 31 20:25:00 2017
+| Host         : Simon-ThinkPad running 64-bit Service Pack 1  (build 7601)
+| Command      : report_control_sets -verbose -file lab_2_top_control_sets_placed.rpt
+| Design       : lab_2_top
+| Device       : xc7z010
+--------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Flip-Flop Distribution
+3. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    12 |
+| Unused register locations in slices containing registers |     7 |
++----------------------------------------------------------+-------+
+
+
+2. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              40 |           18 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              11 |            8 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |              32 |           16 |
+| Yes          | Yes                   | No                     |              54 |           18 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+3. Detailed Control Set Information
+-----------------------------------
+
++-------------------------------------------------+-----------------------------------------------------+--------------------------------------------------------+------------------+----------------+
+|                   Clock Signal                  |                    Enable Signal                    |                    Set/Reset Signal                    | Slice Load Count | Bel Load Count |
++-------------------------------------------------+-----------------------------------------------------+--------------------------------------------------------+------------------+----------------+
+|  zynq_top_i/processing_system7_0/inst/FCLK_CLK0 |                                                     | zynq_top_i/rst_ps7_0_100M/U0/EXT_LPF/lpf_int           |                3 |              4 |
+|  zynq_top_i/processing_system7_0/inst/FCLK_CLK0 | zynq_top_i/rst_ps7_0_100M/U0/SEQ/seq_cnt_en         | zynq_top_i/rst_ps7_0_100M/U0/SEQ/SEQ_COUNTER/clear     |                1 |              6 |
+|  zynq_top_i/processing_system7_0/inst/FCLK_CLK0 |                                                     | zynq_top_i/axi_slave_if_0/U0/axi_arv_arr_flag_i_1_n_0  |                5 |              7 |
+|  zynq_top_i/processing_system7_0/inst/FCLK_CLK0 | zynq_top_i/axi_slave_if_0/U0/axi_awaddr1            | zynq_top_i/axi_slave_if_0/U0/axi_awlen_cntr[7]_i_1_n_0 |                2 |              8 |
+|  zynq_top_i/processing_system7_0/inst/FCLK_CLK0 | zynq_top_i/axi_slave_if_0/U0/axi_araddr1            | zynq_top_i/axi_slave_if_0/U0/axi_arlen_cntr[7]_i_1_n_0 |                4 |              8 |
+|  zynq_top_i/processing_system7_0/inst/FCLK_CLK0 | i_gpio/data_out_0_reg                               | i_gpio/frst_0_n                                        |                4 |              8 |
+|  zynq_top_i/processing_system7_0/inst/FCLK_CLK0 | i_gpio/data_out_1_reg                               | i_gpio/frst_0_n                                        |                4 |              8 |
+|  zynq_top_i/processing_system7_0/inst/FCLK_CLK0 | i_gpio/out_enb_0_reg                                | i_gpio/frst_0_n                                        |                4 |              8 |
+|  zynq_top_i/processing_system7_0/inst/FCLK_CLK0 | i_gpio/out_enb_1_reg                                | i_gpio/frst_0_n                                        |                4 |              8 |
+|  zynq_top_i/processing_system7_0/inst/FCLK_CLK0 | zynq_top_i/axi_slave_if_0/U0/axi_araddr[15]_i_1_n_0 | zynq_top_i/axi_slave_if_0/U0/axi_arv_arr_flag_i_1_n_0  |                6 |             16 |
+|  zynq_top_i/processing_system7_0/inst/FCLK_CLK0 | zynq_top_i/axi_slave_if_0/U0/axi_awaddr[15]_i_1_n_0 | zynq_top_i/axi_slave_if_0/U0/axi_arv_arr_flag_i_1_n_0  |                5 |             16 |
+|  zynq_top_i/processing_system7_0/inst/FCLK_CLK0 |                                                     |                                                        |               19 |             41 |
++-------------------------------------------------+-----------------------------------------------------+--------------------------------------------------------+------------------+----------------+
+
+
++--------+-----------------------+
+| Fanout | Number of ControlSets |
++--------+-----------------------+
+| 4      |                     1 |
+| 6      |                     1 |
+| 7      |                     1 |
+| 8      |                     6 |
+| 16+    |                     3 |
++--------+-----------------------+
+
+
